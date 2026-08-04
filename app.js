@@ -4,7 +4,7 @@ const userRouter = require('./routes/userRoutes');
 
 const morgan = require('morgan');
 const app = express();
-
+app.set('query parser', 'extended');
 // 1) GLOBAL MIDDLEWARE
 app.use(morgan('dev'));
 app.use(express.json());
