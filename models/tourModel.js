@@ -74,6 +74,7 @@ tourSchema.pre('save', function () {
   this.slug = slugify(this.name, { lower: true });
 });
 
+//Query middleware
 tourSchema.pre(/^find/, function () {
   this.find({ secretTour: { $ne: true } });
 });
@@ -81,6 +82,11 @@ tourSchema.pre(/^find/, function () {
 //   console.log(doc);
 
 // });
+
+//Aggregation middleware
+tourSchema.pre('aggregate', function () {
+  this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
+});
 
 const Tour = mongoose.model('Tour', tourSchema);
 
