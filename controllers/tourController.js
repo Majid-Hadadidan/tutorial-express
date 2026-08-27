@@ -185,7 +185,7 @@ exports.monthlyPlan = async (req, res) => {
           numTourStarts: -1,
         },
       },
-      {$limit:12}
+      { $limit: 12 },
     ]);
     res.status(200).json({
       status: 'success',
